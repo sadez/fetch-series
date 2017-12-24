@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import ListSubheader from 'material-ui/List/ListSubheader';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Collapse from 'material-ui/transitions/Collapse';
-import InboxIcon from 'material-ui-icons/MoveToInbox';
+import Movie from 'material-ui-icons/Movie';
 import DraftsIcon from 'material-ui-icons/Drafts';
 import SendIcon from 'material-ui-icons/Send';
 import ExpandLess from 'material-ui-icons/ExpandLess';
@@ -26,6 +25,10 @@ const styles = theme => ({
   },
 });
 
+function n(n){
+  return n > 9 ? "" + n: "0" + n;
+};
+
 class Saison extends React.Component {
 
 //json de la saison
@@ -37,6 +40,8 @@ class Saison extends React.Component {
       open: false
     };
   };
+
+
 
   handleClick = () => {
     this.setState({ open: !this.state.open });
@@ -52,10 +57,9 @@ class Saison extends React.Component {
 
     return(
       <div>
-
           <ListItem button onClick={this.handleClick}>
             <ListItemIcon>
-              <InboxIcon />
+              <Movie />
             </ListItemIcon>
             <ListItemText inset primary={`Saison  ${this.props.saisonNum + 1}`} />
             {this.state.open ? <ExpandLess /> : <ExpandMore />}
@@ -63,12 +67,8 @@ class Saison extends React.Component {
           <Collapse component="li" in={this.state.open} timeout="auto" unmountOnExit>
             <List disablePadding>
             {this.props.data && this.props.data.map((episode) => (
-              <ListItem button className={classes.nested} key={episode.id}>
-                <ListItemIcon>
-                  <StarBorder />
-                </ListItemIcon>
-                <ListItemText inset primary={episode ? 'S'+episode.season+'E'+episode.number : 'none' } />
-                <ListItemText inset primary={episode ? episode.name : 'none'} />
+              <ListItem  button dense className={classes.nested} key={episode.id}>
+                <ListItemText  secondary={episode ? 'S'+n(episode.season)+'E'+n(episode.number) : 'none' }  primary ={episode ? episode.name : 'none'} />
               </ListItem>
             ))}
             </List>

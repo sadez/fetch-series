@@ -2,14 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import ListSubheader from 'material-ui/List/ListSubheader';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Collapse from 'material-ui/transitions/Collapse';
-import InboxIcon from 'material-ui-icons/MoveToInbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import SendIcon from 'material-ui-icons/Send';
-import ExpandLess from 'material-ui-icons/ExpandLess';
-import ExpandMore from 'material-ui-icons/ExpandMore';
-import StarBorder from 'material-ui-icons/StarBorder';
+import List from 'material-ui/List';
 import series from '../utils/series.json'
 import { groupBy } from 'underscore'
 import Saison from './Saison'
@@ -57,11 +50,8 @@ class NestedList extends React.Component {
   render() {
     const { classes } = this.props;
     //const series = series ;
-    console.log(  this.state);
+    //console.log(  this.state);
     //indexBy(series, 'season');
-
-
-
     //arr.map((e) => (this.setState({ openNested: !this.state.open });));
 
     if (classes){

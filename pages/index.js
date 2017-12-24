@@ -51,14 +51,11 @@ class Index extends Component {
 
                </CardContent>
                <CardActions>
-                   <Button dense color="primary">
-                     <Link href={`/post?id=${show.id}`}>
-                      <span>More info</span>
-                     </Link>
-                   </Button>
+                 <Link href={`/post?id=${show.id}`}>
                    <Button raised color="primary">
-                    Primary
-                  </Button>
+                      More info
+                   </Button>
+                   </Link>                   
                </CardActions>
            </Card>
 

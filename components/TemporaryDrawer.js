@@ -53,7 +53,7 @@ class TemporaryDrawer extends React.Component {
 
     return (
       <div onClick={this.toggleDrawer('left', !this.state.left)}>
-        <Button onClick={this.toggleDrawer('left', true)}><MenuIcon /></Button>
+        <Button dense color="contrast" onClick={this.toggleDrawer('left', true)}><MenuIcon /></Button>
         <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
           <div tabIndex="0" role="button" onClick={this.toggleDrawer('left', false)} onKeyDown={this.toggleDDrawer('left', false)} >
             {sideList}

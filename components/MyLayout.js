@@ -1,4 +1,5 @@
 import Header from './Header';
+import SimpleBottomNavigation from './BottomNav';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
@@ -15,11 +16,13 @@ const Layout = (props) => (
          <meta name="theme-color" content="#000000"/>
          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
      </Head>
-    <Header />
+      <Header/>
 
       <div className="paperStyle" >
         {props.children}
       </div>
+
+      <SimpleBottomNavigation class="fixBottom"/>
 
     <style jsx global>{`
       body{
@@ -36,7 +39,7 @@ const Layout = (props) => (
         margin-right: 20px;
       }
       .layoutStyle{
-        padding-top: 41px;
+        padding-top: 64px;
         display: block;
         background-color: #eeeeee ;
       }
@@ -51,7 +54,10 @@ const Layout = (props) => (
       .cardStyle{
         max-width : 500px;
         //min-width : 45%;
-        margin : 20px;
+        //margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 8px;
+        margin-left: 20px;
         width : 95%;
       }
       .listStyle{
@@ -70,6 +76,13 @@ const Layout = (props) => (
       }
       .rightIconButton{
         margin-right : 8px;
+      }
+      .fixBottom{
+        width: 100%;
+        top: 90%;
+        left: auto;
+        /* right: 0; */
+        position: fixed;
       }
     `}</style>
   </div>

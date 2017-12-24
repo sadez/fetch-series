@@ -49,10 +49,7 @@ class Post extends Component {
             </Card>
 
             <Card raised = {true} className="cardStyle">
-                  <CardContent>
-                    <Typography type="headline">{show.name}</Typography>
-                    <Typography type="subheading">X</Typography>
-                    <Typography type="subheading">Nombre Saisons : 3</Typography>
+                  <CardContent>                    
                     <NestedList/>
                   </CardContent>
               </Card>

@@ -1,21 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
 import RestoreIcon from 'material-ui-icons/Restore';
 import AppBar from 'material-ui/AppBar';
 import FavoriteIcon from 'material-ui-icons/Favorite';
 import LocationOnIcon from 'material-ui-icons/LocationOn';
 
-const styles = {
-  root: {
-    width: '100%',
-    top: '90%',
-    left: 'auto',
-    /* right: 0; */
-    position: 'fixed',
-  },
-};
+
 
 class SimpleBottomNavigation extends React.Component {
   state = {
@@ -27,28 +18,33 @@ class SimpleBottomNavigation extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { value } = this.state;
 
     return (
-
-      <BottomNavigation
-        value={value}
-        onChange={this.handleChange}
-        showLabels
-        className={classes.root}
-      >
-        <BottomNavigationButton label="Recents" icon={<RestoreIcon />} />
-        <BottomNavigationButton label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationButton label="Nearby" icon={<LocationOnIcon />} />
-      </BottomNavigation>
+	<div>
+		<BottomNavigation
+			value={value}
+			onChange={this.handleChange}
+			showLabels
+			className='fixBottom'>
+			<BottomNavigationButton label="Recents" icon={<RestoreIcon />} />
+			<BottomNavigationButton label="Favorites" icon={<FavoriteIcon />} />
+			<BottomNavigationButton label="Nearby" icon={<LocationOnIcon />} />
+		 </BottomNavigation>
+		<style jsx global>{`		  
+		  .fixBottom{
+			width: 100%;
+			top: 90%;
+			left: auto;
+			position: fixed;
+		  }
+		`}
+		</style>	
+	</div>
+      
 
     );
   }
 }
 
-SimpleBottomNavigation.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(SimpleBottomNavigation);
+export default SimpleBottomNavigation;

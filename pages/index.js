@@ -14,11 +14,13 @@ import Button from 'material-ui/Button';
 import { yellow, purple } from 'material-ui/colors';
 
 
-class Index extends Component {
+
+class Index extends Component {	
 
 
-  constructor(props){
-    super(props);
+    constructor (props) {
+    super(props)
+
     this.state = {
       data:{}
     };
@@ -26,10 +28,9 @@ class Index extends Component {
 
 
   render(){
-
+	
     const shows = this.props.shows;
-
-
+	
     if (shows){
       return(
         <Layout>
@@ -51,11 +52,9 @@ class Index extends Component {
 
                </CardContent>
                <CardActions>
-                 <Link href={`/post?id=${show.id}`}>
                    <Button raised color="primary">
                       More info
                    </Button>
-                   </Link>                   
                </CardActions>
            </Card>
 
@@ -69,12 +68,12 @@ class Index extends Component {
 }
 
 Index.getInitialProps = async function() {
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
-  const data = await res.json()
-
-  return {
-    shows: data
-  }
+	const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
+	const data = await res.json();
+	
+	return {
+		shows: data
+	}
 }
 
 export default Index;

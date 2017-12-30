@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Button from 'material-ui/Button';
 import Dialog, {  DialogTitle,  DialogContent,  DialogContentText,  DialogActions,} from 'material-ui/Dialog';
 import Typography from 'material-ui/Typography';
-import { withStyles } from 'material-ui/styles';
 import withRoot from '../components/withRoot';
 import fetch from 'isomorphic-unfetch';
 import Stars from '../components/Stars';
@@ -14,13 +13,6 @@ import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Movie from 'material-ui-icons/Movie';
 import { yellow, purple } from 'material-ui/colors';
 
-
-const styles = {
-  root: {
-    textAlign: 'center',
-    paddingTop: 200,
-  },
-};
 
 class Index extends React.Component {
 
@@ -53,7 +45,6 @@ class Index extends React.Component {
     if(shows){
       return (
         <Layout>
-
              <List className="listStyle">
              {shows.map(({show}) => (
              <Card raised = {true} className="cardStyle" key={show.id}>
@@ -70,11 +61,11 @@ class Index extends React.Component {
                   <Typography type="body1" className='threePoints'>{ReactHtmlParser(show.summary.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "").substring(0,200))}...</Typography>
                 </CardContent>
                 <CardActions>
-                  <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
-                    <Button raised color="primary">
-                       More info
-                    </Button>
-                  </Link>
+                  <Button raised color="primary">
+                    <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
+                         <div>More info</div>
+                    </Link>
+                  </Button>
                 </CardActions>
             </Card>
 
@@ -88,13 +79,22 @@ class Index extends React.Component {
 }
 
 
-Index.getInitialProps = async function() {
-	const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
-	const data = await res.json();
+Index.getInitialProps = async function(context) {
+
+  const { id } = context.query
+  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
+  if(context.query){
+    const res2 = await fetch(`https://api.tvmaze.com/search/shows?q=${id}`)
+    return {
+  		shows:  await res2.json()
+  	}
+  }
+
+  const data = await res.json();
 
 	return {
 		shows: data
 	}
 }
 
-export default withRoot(withStyles(styles)(Index));
+export default withRoot(Index);

@@ -31,17 +31,21 @@ class SimpleBottomNavigation extends React.Component {
 			<BottomNavigationButton label="Favorites" icon={<FavoriteIcon />} />
 			<BottomNavigationButton label="Nearby" icon={<LocationOnIcon />} />
 		 </BottomNavigation>
-		<style jsx global>{`		  
+		<style jsx global>{`
 		  .fixBottom{
 			width: 100%;
-			top: 90%;
+      bottom: 0;
 			left: auto;
 			position: fixed;
+      z-index: 1100;
 		  }
+      @media (min-width: 1000px){
+      }
+
 		`}
-		</style>	
+		</style>
 	</div>
-      
+
 
     );
   }

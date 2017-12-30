@@ -25,7 +25,7 @@ function Header(props) {
           <TemporaryDrawer/>
           <Typography type="title" color="inherit" className="classflex">
             <Link href='/'>
-              <Button color="contrast">Mes series</Button>
+              <Button color="contrast">My series</Button>
             </Link>
           </Typography>
             <IconButton className="menuButton" color="contrast" aria-label="Search">

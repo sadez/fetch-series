@@ -1,21 +1,20 @@
 {
-  "name": "material",
-  "version": "0.1.0",
+  "name": "next.js",
+  "version": "1.0.0",
   "private": true,
-  "main": "index.js",
   "dependencies": {
+    "material-ui": "next",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
     "express": "^4.16.2",
     "isomorphic-unfetch": "^2.0.0",
     "jss": "^9.4.0",
     "jss-preset-default": "^4.0.1",
     "material-design-icons": "^3.0.1",
-    "material-ui": "^1.0.0-beta.23",
     "material-ui-icons": "^1.0.0-beta.17",
-    "next": "^4.2.1",
     "path": "^0.12.7",
     "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "react-html-parser": "^2.0.2",
     "react-intl": "^2.4.0",
     "react-jss": "^8.1.0",
@@ -27,10 +26,8 @@
     "underscore": "^1.8.3"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "next start"
   }
 }

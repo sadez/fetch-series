@@ -25,16 +25,25 @@ class Stars extends Component {
 
     const { average } = this.props;
 
+    if(average){
+      return(
+        <div>
+          <Star color={getNumberStarts(average) >=1 ? 'accent' : 'primary'}></Star>
+          <Star color={getNumberStarts(average) >=2 ? 'accent' : 'primary'}></Star>
+          <Star color={getNumberStarts(average) >=3 ? 'accent' : 'primary'}></Star>
+          <Star color={getNumberStarts(average) >=4 ? 'accent' : 'primary'}></Star>
+          <Star color={getNumberStarts(average) >=5 ? 'accent' : 'primary'}></Star>
+        </div>
+      );
+    }
+    else{
+      return(
+        <div>
+          <Star></Star>   
+        </div>
+      );
+    }
 
-    return(
-      <div>
-        <Star color={getNumberStarts(average) >=1 ? 'accent' : ''}></Star>
-        <Star color={getNumberStarts(average) >=2 ? 'accent' : ''}></Star>
-        <Star color={getNumberStarts(average) >=3 ? 'accent' : ''}></Star>
-        <Star color={getNumberStarts(average) >=4 ? 'accent' : ''}></Star>
-        <Star color={getNumberStarts(average) >=5 ? 'accent' : ''}></Star>
-      </div>
-    );
   }
 }
 

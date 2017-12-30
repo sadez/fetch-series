@@ -1,22 +1,12 @@
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/mui-org/material-ui/tree/v1-beta/examples/nextjs)
-# Next.js example
+# Fetch series
 
 ## How to use
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
+1/clone the repo
 
-```bash
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/v1-beta | tar -xz --strip=2  material-ui-1-beta/examples/nextjs
-cd nextjs
-```
-
-Install it and run:
+2/Install it and run:
 
 ```bash
 npm install
 npm run dev
 ```
-
-## The idea behind the example
-
-[Next.js](https://github.com/zeit/next.js) is a framework for server-rendered React apps.

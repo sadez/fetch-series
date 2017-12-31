@@ -61,17 +61,22 @@ class Index extends React.Component {
                   <Typography type="body1" className='threePoints'>{ReactHtmlParser(show.summary.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "").substring(0,200))}...</Typography>
                 </CardContent>
                 <CardActions>
-                  <Button raised color="primary">
+                  <Typography>
                     <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
-                         <div>More info</div>
+                      <Button raised color="primary">More info</Button>
                     </Link>
-                  </Button>
+                  </Typography>
                 </CardActions>
             </Card>
 
              ))}
              </List>
          </Layout>
+      );
+    }
+    else{
+      return(
+        <div>Error page loading</div>
       );
     }
 
@@ -82,6 +87,7 @@ class Index extends React.Component {
 Index.getInitialProps = async function(context) {
 
   const { id } = context.query
+  console.log(context)
   const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
   if(context.query){
     const res2 = await fetch(`https://api.tvmaze.com/search/shows?q=${id}`)

@@ -1,6 +1,6 @@
 {
-  "name": "Next.js",
-  "short_name": "Next.js",
+  "name": "My series",
+  "short_name": "My series",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#9c27b0",

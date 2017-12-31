@@ -42,7 +42,7 @@ class Layout extends Component {
   		  }
   		  .paperStyle{
   			//padding-top: 16px;
-  			padding-bottom: 16px;
+  			padding-bottom: 50px;
   			padding-left: 5px;
   			padding-right: 5px;
   			background-color: #eeeeee !important;

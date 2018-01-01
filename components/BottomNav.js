@@ -1,34 +1,36 @@
 import React from 'react';
+//next imports
 import Link from 'next/link';
 import Router from 'next/router'
+//mui imports
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
-import RestoreIcon from 'material-ui-icons/Restore';
-import AppBar from 'material-ui/AppBar';
 import Info from 'material-ui-icons/Info';
 import Movie from 'material-ui-icons/Movie';
 import Search from 'material-ui-icons/Search';
 
-
+// component for Bottom navigation with three paths : home , searchPage and about
 class SimpleBottomNavigation extends React.Component {
 
+  // state value is the active nav , zero by default
   constructor(props){
     super(props);
     this.state = {value: 0};
-
   };
-componentDidMount() {
-  if(Router.pathname == '/about'){
-    this.setState({value: 2});
 
-    this.state = {value: 2};
-  }
-  else if (Router.pathname == '/searchPage') {
-    this.setState({value: 1});
-  }else{
-    this.setState({value: 0});
-  }
-}
 
+  componentDidMount() {
+    //check from url to know the active nav
+    if(Router.pathname == '/about'){
+      this.setState({value: 2});
+    }
+    else if (Router.pathname == '/searchPage') {
+      this.setState({value: 1});
+    }else{
+      this.setState({value: 0});
+    }
+  }
+
+//routing after click
   handleChange = (event, value) => {
     this.setState({ value });
     if(value==2){
@@ -40,9 +42,6 @@ componentDidMount() {
     if(value==0){
       Router.push({pathname: '/'})
     }
-
-
-
   };
 
   render() {
@@ -71,8 +70,6 @@ componentDidMount() {
     		`}
     		</style>
     	</div>
-
-
     );
   }
 }

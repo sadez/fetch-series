@@ -1,13 +1,10 @@
-
 import React, { Component } from 'react';
 import Star from 'material-ui-icons/Star';
 
-
-
+//component to render rating of a show
 class Stars extends Component {
 
   render(){
-
     var getNumberStarts = function(decimalRating){
       if(decimalRating <= 2 )
         return 1;
@@ -39,11 +36,10 @@ class Stars extends Component {
     else{
       return(
         <div>
-        <Star></Star>      
+        <Star></Star>
         </div>
       );
     }
-
   }
 }
 

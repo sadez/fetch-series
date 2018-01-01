@@ -1,33 +1,23 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
+//mui imports
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
-import Search from 'material-ui-icons/Search';
-import TextField from 'material-ui/TextField';
 import MoreVert from 'material-ui-icons/MoreVert';
-import TemporaryDrawer from './TemporaryDrawer';
 import ArrowDropDown from 'material-ui-icons/ArrowDropDown';
 
-
-
-
-// We can use inline-style
+// inline-style
 const style = {
   flex: 1,
   justifyContent: 'flex-start'
-  //paddingLeft: '5px',
-  //paddingRight: '5px',
 };
 const zindex = {
   zIndex: '2000'
 };
 
-
+// our Header component
 class Header extends Component {
 
   constructor(props) {
@@ -43,21 +33,9 @@ class Header extends Component {
                 My series
            </Typography>
            <IconButton  color="contrast" aria-label="Delete">
-           <ArrowDropDown />
+             <ArrowDropDown />
            </IconButton>
            <div style={style}></div>
-        {/*   <Typography  >
-            <form className="menuButton" onSubmit={this.handleSubmit}>
-             <input type="search" value={this.state.href} onChange={this.handleChange} placeholder="Search..."  />
-               <Button type="submit" value="Submit"  color="contrast" aria-label="Search">
-                  <Search />
-                Search
-              </Button>
-           </form>
-           </Typography>
-        <Link as={`/search/${this.state.href}`} href={{pathname: '/', query: { id: this.state.href } }}>
-             <Button color="contrast">My series</Button>
-           </Link>*/}
             <IconButton  color="contrast" aria-label="Search">
               <MoreVert/>
             </IconButton>

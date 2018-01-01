@@ -1,14 +1,13 @@
-// pages/about.js
-import withRoot from '../components/withRoot';
-import Layout from '../components/MyLayout.js'
+import React, { Component } from 'react';
+//mui imports
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import React, { Component } from 'react';
 import List from 'material-ui/List';
+//local imports
+import withRoot from '../components/withRoot';
+import Layout from '../components/MyLayout.js'
 
-
-
-
+//About page ./page
 class About extends Component {
 
   render(){

@@ -1,19 +1,21 @@
-import Layout from '../components/MyLayout.js'
-import withRoot from '../components/withRoot';
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch'
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
+//mui imports
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Movie from 'material-ui-icons/Movie';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+//local imports
 import Stars from '../components/Stars';
 import NestedList from '../components/NestedList';
+import Layout from '../components/MyLayout.js'
+import withRoot from '../components/withRoot';
 import series from '../utils/series.json'
 
+//page of detail of show ./p/975
 class Post extends Component {
-
       constructor(props){
       super(props);
       this.state = {
@@ -62,6 +64,8 @@ class Post extends Component {
   }
 }
 
+
+// get the data of a show
 Post.getInitialProps = async function (context) {
   const { id } = context.query
   //const res = await fetch(`https://api.tvmaze.com/shows/${id}`)

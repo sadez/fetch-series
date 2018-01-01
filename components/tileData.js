@@ -1,5 +1,3 @@
-// This file is shared across the demos.
-
 import React from 'react';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import InboxIcon from 'material-ui-icons/MoveToInbox';
@@ -10,6 +8,8 @@ import MailIcon from 'material-ui-icons/Mail';
 import DeleteIcon from 'material-ui-icons/Delete';
 import ReportIcon from 'material-ui-icons/Report';
 
+
+//info of the drawer
 export const partie1MenuDrawer = (
   <div>
     <ListItem button>

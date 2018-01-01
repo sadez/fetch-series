@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import SimpleBottomNavigation from './BottomNav';
 import { withStyles } from 'material-ui/styles';
 
+import Header from './Header';
+import SimpleBottomNavigation from './BottomNav';
+
+// Component define the layout of every nextjs page(header ,content,bottomna) , global styles are defines here
 class Layout extends Component {
 
 	constructor (props) {
-		super(props)
-		this.state = {
-		  data:{}
-		};
+		super(props);
   };
 
   render(){
@@ -23,9 +22,9 @@ class Layout extends Component {
 
 			<style jsx global>{`
   		  body{
-  			margin : 0px;
-				padding: 0;
-				height: 100%;
+	  			margin : 0px;
+					padding: 0;
+					height: 100%;
   		  }
 				html{
 				    min-height:100%;/* make sure it is at least as tall as the viewport */
@@ -86,8 +85,6 @@ class Layout extends Component {
   			//justify-content: center;
   			align-items: center;
   			flex-direction: column;
-  			//background-color: #eeeeee;
-  			//background: #eeeeee;
   		  }
   		  .cardMediaStyle{
   				height: 350px;

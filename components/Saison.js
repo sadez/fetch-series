@@ -1,23 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//mui imports
 import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Collapse from 'material-ui/transitions/Collapse';
 import Movie from 'material-ui-icons/Movie';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import SendIcon from 'material-ui-icons/Send';
 import ExpandLess from 'material-ui-icons/ExpandLess';
 import ExpandMore from 'material-ui-icons/ExpandMore';
-import StarBorder from 'material-ui-icons/StarBorder';
-import { groupBy } from 'underscore'
-
 
 
 
 const styles = theme => ({
   root: {
-    //width: '100%',
-    //maxWidth: 360,
     background: theme.palette.background.paper,
   },
   nested: {
@@ -25,10 +18,12 @@ const styles = theme => ({
   },
 });
 
+//add zero 1=>01
 function n(n){
   return n > 9 ? "" + n: "0" + n;
 };
 
+//Component listing episodes of a season with collapse system
 class Saison extends React.Component {
 
 //json de la saison
@@ -41,18 +36,13 @@ class Saison extends React.Component {
     };
   };
 
-
-
   handleClick = () => {
     this.setState({ open: !this.state.open });
   };
 
   render(){
 
-    const {
-      data
-    } = this.props;
-
+    const { data } = this.props; // data of a season
     const { classes } = this.props;
 
     return(
@@ -73,13 +63,9 @@ class Saison extends React.Component {
             ))}
             </List>
           </Collapse>
-
         </div>
-
     );
   }
 }
-
-
 
 export default withStyles(styles)(Saison);

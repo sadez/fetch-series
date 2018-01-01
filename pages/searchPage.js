@@ -1,11 +1,15 @@
+import React, { Component } from 'react';
+import fetch from 'isomorphic-unfetch';
+//mui imports
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+//local imports
 import withRoot from '../components/withRoot';
 import Layout from '../components/MyLayout.js'
 import SerieBarSearch from '../components/SerieBarSearch.js'
 import FilmCard from '../components/FilmCard.js';
-import fetch from 'isomorphic-unfetch';
-import React, { Component } from 'react';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 
+
+// page of the serach page ./searchPage  ./searchPage/batman
 class SearchPage extends Component {
 
   constructor (props) {
@@ -42,7 +46,7 @@ class SearchPage extends Component {
   }
 }
 
-
+//searching from API
 SearchPage.getInitialProps = async function(context) {
 
   const { id } = context.query

@@ -1,15 +1,16 @@
+import React, { Component } from 'react';
 import Router from 'next/router';
 import Link from 'next/link';
+//mui imports
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import React, { Component } from 'react';
 import Search from 'material-ui-icons/Search';
 import IconButton from 'material-ui/IconButton';
 import AppBar from 'material-ui/AppBar';
 import Input from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 
-
+//component of to search a serie from api
 class SerieBarSearch extends Component {
 
   constructor (props) {
@@ -20,7 +21,7 @@ class SerieBarSearch extends Component {
       href :''
     };
   };
-
+  // ex :route to /searchPage/batman
   handleSubmit(event) {
     event.preventDefault();
     Router.push({
@@ -53,7 +54,6 @@ class SerieBarSearch extends Component {
                   />
                  </FormControl>
                </form>
-
              </Typography>
            </Toolbar>
          </AppBar>

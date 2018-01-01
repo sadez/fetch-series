@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
+import ReactHtmlParser from 'react-html-parser';
+//mui imports
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
-import Stars from '../components/Stars';
-import ReactHtmlParser from 'react-html-parser';
-import Link from 'next/link';
 import Button from 'material-ui/Button';
+import FavoriteIcon from 'material-ui-icons/Favorite';
+import IconButton from 'material-ui/IconButton';
+//local imports
+import Stars from '../components/Stars';
 
 
-
+//Component to parse and design a film card with cardmedia ,cardcontent and cardactions
+//data are information of a film
 class FilmCard extends Component {
 
   render(){
-
     const { data } = this.props;
-    console.log()
       return(
         <Card raised = {true} className="cardStyle">
            <CardMedia
@@ -51,13 +54,13 @@ class FilmCard extends Component {
                  <Button raised color="primary">More info</Button>
                </Link>
              </Typography>
+              <IconButton color='accent' aria-label="Add to favorites">
+                <FavoriteIcon />
+              </IconButton>
            </CardActions>
         </Card>
       );
 
   }
 }
-
-
-
 export default FilmCard;

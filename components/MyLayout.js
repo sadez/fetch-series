@@ -90,7 +90,8 @@ class Layout extends Component {
   			//background: #eeeeee;
   		  }
   		  .cardMediaStyle{
-  			height: 350px;
+  				height: 350px;
+					height: 140px;
   		  }
   		  .rightIconButton{
   			margin-right : 8px;
@@ -100,14 +101,10 @@ class Layout extends Component {
 				    height: auto;
 				}
 				.searchBar{
-					width: 100%;
-					box-sizing: border-box;
-			    flex-shrink: 0;
-					top: 0;
-			    left: auto;
-			    right: 0;
-			    flex-direction: column;
+			    padding-left: 5px;
+    			padding-right:  15px;
 				}
+				.
   		`}</style>
 		</div>
 	  )

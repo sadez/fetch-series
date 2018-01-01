@@ -18,6 +18,8 @@ import ArrowDropDown from 'material-ui-icons/ArrowDropDown';
 
 // We can use inline-style
 const style = {
+  flex: 1,
+  justifyContent: 'flex-start'
   //paddingLeft: '5px',
   //paddingRight: '5px',
 };
@@ -33,12 +35,11 @@ class Header extends Component {
     return(
       <div className="headerC">
         <AppBar position="fixed" >
-          <Toolbar style={style} >
+          <Toolbar  >
             <Typography type="title" color="inherit" >
                 My series
-
            </Typography>
-           <IconButton  color="contrast" aria-label="Delete">
+           <IconButton style={style} color="contrast" aria-label="Delete">
            <ArrowDropDown />
            </IconButton>
         {/*   <Typography  >
@@ -53,7 +54,7 @@ class Header extends Component {
         <Link as={`/search/${this.state.href}`} href={{pathname: '/', query: { id: this.state.href } }}>
              <Button color="contrast">My series</Button>
            </Link>*/}
-            <IconButton className="menuButton classflex" color="contrast" aria-label="Search">
+            <IconButton  color="contrast" aria-label="Search">
               <MoreVert/>
             </IconButton>
           </Toolbar>

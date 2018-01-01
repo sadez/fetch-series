@@ -39,7 +39,7 @@ class Stars extends Component {
     else{
       return(
         <div>
-          <Star></Star>   
+        <Star></Star>      
         </div>
       );
     }

@@ -23,6 +23,9 @@ const style = {
   //paddingLeft: '5px',
   //paddingRight: '5px',
 };
+const zindex = {
+  zIndex: '2000'
+};
 
 
 class Header extends Component {
@@ -34,14 +37,15 @@ class Header extends Component {
   render(){
     return(
       <div className="headerC">
-        <AppBar position="fixed" >
+        <AppBar position="fixed" style={zindex}>
           <Toolbar  >
             <Typography type="title" color="inherit" >
                 My series
            </Typography>
-           <IconButton style={style} color="contrast" aria-label="Delete">
+           <IconButton  color="contrast" aria-label="Delete">
            <ArrowDropDown />
            </IconButton>
+           <div style={style}></div>
         {/*   <Typography  >
             <form className="menuButton" onSubmit={this.handleSubmit}>
              <input type="search" value={this.state.href} onChange={this.handleChange} placeholder="Search..."  />

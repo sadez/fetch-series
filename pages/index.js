@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../components/MyLayout.js';
+import FilmCard from '../components/FilmCard.js';
 import Link from 'next/link';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
@@ -29,44 +30,7 @@ class Index extends React.Component {
         <Layout>
              <List className="listStyle">
              {shows.map(({show}) => (
-            <Card raised = {true} className="cardStyle" key={show.id}>
-                <CardMedia
-                  title={show.name}
-                  image={show.image ? show.image.medium :'http://static.tvmaze.com/uploads/images/medium_portrait/4/10842.jpg'}
-                  className="cardMediaStyle" />
-                <CardContent>
-                    <Typography type="headline">{show.name}</Typography>
-                    <Grid container direction='row' justify='space-between' alignItems='center'>
-                      <Grid item></Grid>
-                      <Grid item>
-                        <Stars average={show.rating.average}></Stars>
-                      </Grid>
-                    </Grid>
-                  <Typography type="subheading">
-                    <Grid container spacing={24}  direction='row' justify='space-between' alignItems='center'>
-                     <Grid item >
-                      <span>{show.language}</span>
-                     </Grid>
-                     <Grid item >
-                         <span>{show.premiered}</span>
-                     </Grid>
-                     <Grid item >
-                      <span>{show.runtime} min</span>
-                     </Grid>
-                    </Grid>
-                   </Typography>
-                   <br/>
-                  <Typography type="body1" className='threePoints'>{ReactHtmlParser(show.summary.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "").substring(0,200))}...</Typography>
-                </CardContent>
-                <CardActions>
-                  <Typography>
-                    <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
-                      <Button raised color="primary">More info</Button>
-                    </Link>
-                  </Typography>
-                </CardActions>
-            </Card>
-
+                <FilmCard data={show}  key={show.id}></FilmCard>
              ))}
              </List>
          </Layout>
@@ -85,16 +49,14 @@ class Index extends React.Component {
 Index.getInitialProps = async function(context) {
 
   const { id } = context.query
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
-  if(context.query){
+  if(context.query.id){
     const res2 = await fetch(`https://api.tvmaze.com/search/shows?q=${id}`)
     return {
   		shows:  await res2.json()
   	}
   }
 
-  const data = await res.json();
-
+  const data = {};
 	return {
 		shows: data
 	}

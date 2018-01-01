@@ -3,16 +3,13 @@
 import { create, SheetsRegistry } from 'jss';
 import preset from 'jss-preset-default';
 import { createMuiTheme, createGenerateClassName } from 'material-ui/styles';
-import {purple , green ,blueGrey} from 'material-ui/colors';
+import {red , green ,teal} from 'material-ui/colors';
 
 
 const theme = createMuiTheme({
   palette: {
-    primary: {
-      ...blueGrey,
-      A400: '#000000de',
-    },
-    secondary: purple,
+    primary: teal,
+    secondary: red,
   },
 });
 

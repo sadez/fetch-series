@@ -24,9 +24,17 @@ class Layout extends Component {
 			<style jsx global>{`
   		  body{
   			margin : 0px;
+				padding: 0;
+				height: 100%;
   		  }
+				html{
+				    min-height:100%;/* make sure it is at least as tall as the viewport */
+				    position:relative;
+				}
   		  .classflex {
-  			  flex: 2;
+					flex: 1;
+			    justify-content: flex-end;
+			    //align-items: right;
   		  }
   		  .headerC: {
   			width: '100%';
@@ -36,17 +44,30 @@ class Layout extends Component {
   			margin-right: 20px;
   		  }
   		  .layoutStyle{
-  			padding-top: 64px;
-  			display: block;
-  			background-color: #eeeeee ;
+	  			padding-top: 64px;
+					//padding-bottom: 110px;
+					min-height: -moz-available;
+					min-height: -webkit-fill-available;
+	  			display: block;
+					height: 100%;
+	  			background-color: #eeeeee ;
+					//position:absolute;
+			    top:0;
+			    bottom:0;
+			    left:0;
+			    right:0;
+			    overflow:hidden;
+			    z-index:-1; /* Remove this line if it's not going to be a background! */
+					background-image: url('./static/wallpaper.png');
+
   		  }
   		  .paperStyle{
   			//padding-top: 16px;
   			padding-bottom: 50px;
   			padding-left: 5px;
   			padding-right: 5px;
-  			background-color: #eeeeee !important;
-  			background: #eeeeee;
+  			//background-color: #eeeeee !important;
+  			//background: #eeeeee;
   		  }
   		  .cardStyle{
   			max-width : 500px;
@@ -65,8 +86,8 @@ class Layout extends Component {
   			//justify-content: center;
   			align-items: center;
   			flex-direction: column;
-  			background-color: #eeeeee;
-  			background: #eeeeee;
+  			//background-color: #eeeeee;
+  			//background: #eeeeee;
   		  }
   		  .cardMediaStyle{
   			height: 350px;
@@ -74,6 +95,19 @@ class Layout extends Component {
   		  .rightIconButton{
   			margin-right : 8px;
   		  }
+				.aboutImg {
+				    width: 100%;
+				    height: auto;
+				}
+				.searchBar{
+					width: 100%;
+					box-sizing: border-box;
+			    flex-shrink: 0;
+					top: 0;
+			    left: auto;
+			    right: 0;
+			    flex-direction: column;
+				}
   		`}</style>
 		</div>
 	  )

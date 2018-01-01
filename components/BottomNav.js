@@ -13,19 +13,19 @@ class SimpleBottomNavigation extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {
-      value: 1
-    };
-  };
+    this.state = {value: 0};
 
-componentWillMount() {
+  };
+componentDidMount() {
   if(Router.pathname == '/about'){
-    this.setState({ value : 2 });
+    this.setState({value: 2});
+
+    this.state = {value: 2};
   }
-  else if (Router.pathname == '/search') {
-      this.setState({ value : 1 });
+  else if (Router.pathname == '/searchPage') {
+    this.setState({value: 1});
   }else{
-      this.setState({ value : 0 });
+    this.setState({value: 0});
   }
 }
 
@@ -35,7 +35,7 @@ componentWillMount() {
       Router.push({pathname: '/about'})
     }
     if(value==1){
-      Router.push({pathname: '/'})
+      Router.push({pathname: '/searchPage'})
     }
     if(value==0){
       Router.push({pathname: '/'})

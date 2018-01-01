@@ -9,6 +9,8 @@ import SerieBarSearch from '../components/SerieBarSearch.js'
 import FilmCard from '../components/FilmCard.js';
 
 
+const BASE_URL = 'https://api.tvmaze.com';
+
 // page of the serach page ./searchPage  ./searchPage/batman
 class SearchPage extends Component {
 
@@ -52,7 +54,7 @@ SearchPage.getInitialProps = async function(context) {
   const { id } = context.query
 
   if(context.query.id){
-    const res2 = await fetch(`https://api.tvmaze.com/search/shows?q=${id}`)
+    const res2 = await fetch(`${BASE_URL}/search/shows?q=${id}`)
     return {
   		shows:  await res2.json()
   	}

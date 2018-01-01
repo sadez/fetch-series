@@ -46,7 +46,11 @@ class FilmCard extends Component {
                </Grid>
               </Typography>
               <br/>
-             <Typography type="body1" className='threePoints'>{data.summary ? ReactHtmlParser(data.summary.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "").substring(0,200)) : show.name}...</Typography>
+             <Typography type="body1" className='threePoints'>
+               {data.summary ?
+                 ReactHtmlParser(data.summary.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "").substring(0,200))
+                 : data.name}...
+             </Typography>
            </CardContent>
            <CardActions>
              <Typography>

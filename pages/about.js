@@ -15,7 +15,7 @@ class About extends Component {
       <Layout>
         <List className="listStyle">
            <Paper className="paperStyle" elevation={4}>
-             <Typography type="headline" component="h3">
+             <Typography variant="headline" component="h3">
                Copyright Policy
              </Typography>
              <br/>

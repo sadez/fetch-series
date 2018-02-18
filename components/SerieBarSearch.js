@@ -42,7 +42,7 @@ class SerieBarSearch extends Component {
              <IconButton aria-label="Search" >
                <Search/>
              </IconButton>
-             <Typography className="classflex" type="title" color="inherit">
+             <div className="classflex" >
                <form className="menuButton" onSubmit={this.handleSubmit}>
                  <FormControl fullWidth>
                  <Input
@@ -54,7 +54,7 @@ class SerieBarSearch extends Component {
                   />
                  </FormControl>
                </form>
-             </Typography>
+             </div>
            </Toolbar>
          </AppBar>
       );

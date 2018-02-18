@@ -25,11 +25,11 @@ class Stars extends Component {
     if(average){
       return(
         <div>
-          <Star color={getNumberStarts(average) >=1 ? 'accent' : 'primary'}></Star>
-          <Star color={getNumberStarts(average) >=2 ? 'accent' : 'primary'}></Star>
-          <Star color={getNumberStarts(average) >=3 ? 'accent' : 'primary'}></Star>
-          <Star color={getNumberStarts(average) >=4 ? 'accent' : 'primary'}></Star>
-          <Star color={getNumberStarts(average) >=5 ? 'accent' : 'primary'}></Star>
+          <Star color={getNumberStarts(average) >=1 ? 'secondary' : 'inherit'}></Star>
+          <Star color={getNumberStarts(average) >=2 ? 'secondary' : 'inherit'}></Star>
+          <Star color={getNumberStarts(average) >=3 ? 'secondary' : 'inherit'}></Star>
+          <Star color={getNumberStarts(average) >=4 ? 'secondary' : 'inherit'}></Star>
+          <Star color={getNumberStarts(average) >=5 ? 'secondary' : 'inherit'}></Star>
         </div>
       );
     }

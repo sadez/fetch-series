@@ -36,15 +36,15 @@ class Post extends Component {
                   image={show.image ? show.image.medium :'http://static.tvmaze.com/uploads/images/medium_portrait/4/10842.jpg'}
                   className="cardMediaStyle" />
                 <CardContent>
-                  <Typography type="headline">{show.name}</Typography>
-                  <Typography type="subheading">{show.language}</Typography>
-                  <Typography type="subheading">Premiere :{show.premiered}</Typography>
-                  <Typography type="subheading">Durée    :{show.runtime} min</Typography>
+                  <Typography variant="headline">{show.name}</Typography>
+                  <Typography variant="subheading">{show.language}</Typography>
+                  <Typography variant="subheading">Premiere :{show.premiered}</Typography>
+                  <Typography variant="subheading">Durée    :{show.runtime} min</Typography>
                   <Stars average={show.rating.average}></Stars>
-                  <Typography type="body1" className='threePoints'>{ReactHtmlParser(show.summary.replace(/(<p[^>]+?>|<p>|<\/p>)/img, ""))}</Typography>
+                  <Typography variant="body1" className='threePoints'>{ReactHtmlParser(show.summary.replace(/(<p[^>]+?>|<p>|<\/p>)/img, ""))}</Typography>
                 </CardContent>
                 <CardActions>
-                    <Button href={`http://www.imdb.com/title/${show.externals.imdb}`} raised color="primary" >
+                    <Button href={`http://www.imdb.com/title/${show.externals.imdb}`} raised="true" color="primary" >
                       <Movie className="rightIconButton"/>
                      IMDb
                    </Button>

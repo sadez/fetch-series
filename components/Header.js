@@ -29,14 +29,14 @@ class Header extends Component {
       <div className="headerC">
         <AppBar position="fixed" style={zindex}>
           <Toolbar  >
-            <Typography type="title" color="inherit" >
+            <Typography variant="title" color="inherit" >
                 My series
            </Typography>
-           <IconButton  color="contrast" aria-label="Delete">
+           <IconButton  color="inherit" aria-label="Delete">
              <ArrowDropDown />
            </IconButton>
            <div style={style}></div>
-            <IconButton  color="contrast" aria-label="Search">
+            <IconButton  color="inherit" aria-label="Search">
               <MoreVert/>
             </IconButton>
           </Toolbar>

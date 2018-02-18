@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Router from 'next/router'
 //mui imports
-import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
+import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
 import Info from 'material-ui-icons/Info';
 import Movie from 'material-ui-icons/Movie';
 import Search from 'material-ui-icons/Search';
@@ -53,9 +53,9 @@ class SimpleBottomNavigation extends React.Component {
     			onChange={this.handleChange}
     			showLabels
     			className='fixBottom'>
-    			<BottomNavigationButton label="Favourite show" icon={<Movie />} />
-    			<BottomNavigationButton label="Search" icon={<Search />} />
-    			<BottomNavigationButton label="About" icon={<Info />} />
+    			<BottomNavigationAction  label="Favourite show" icon={<Movie />} />
+    			<BottomNavigationAction  label="Search" icon={<Search />} />
+    			<BottomNavigationAction  label="About" icon={<Info />} />
     		 </BottomNavigation>
     		<style jsx global>{`
     		  .fixBottom{

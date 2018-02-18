@@ -44,7 +44,7 @@ class Post extends Component {
                   <Typography variant="body1" className='threePoints'>{ReactHtmlParser(show.summary.replace(/(<p[^>]+?>|<p>|<\/p>)/img, ""))}</Typography>
                 </CardContent>
                 <CardActions>
-                    <Button href={`http://www.imdb.com/title/${show.externals.imdb}`} raised="true" color="primary" >
+                    <Button href={`http://www.imdb.com/title/${show.externals.imdb}`} variant="raised" color="primary" >
                       <Movie className="rightIconButton"/>
                      IMDb
                    </Button>

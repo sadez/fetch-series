@@ -55,7 +55,7 @@ class FilmCard extends Component {
            <CardActions>
              <Typography>
                <Link as={`/p/${data.id}`} href={`/post?id=${data.id}`}>
-                 <Button raised="true" color="primary">More info</Button>
+                 <Button variant="raised" color="primary">More info</Button>
                </Link>
              </Typography>
               <IconButton color='secondary' aria-label="Add to favorites">

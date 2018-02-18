@@ -101,7 +101,9 @@ class Layout extends Component {
 			    padding-left: 5px;
     			padding-right:  15px;
 				}
-				.
+				.textLogin{
+					text-align: center;
+				}
   		`}</style>
 		</div>
 	  )

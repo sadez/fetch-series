@@ -25,11 +25,23 @@
     "react-scripts": "1.0.17",
     "react-tap-event-plugin": "^3.0.2",
     "typeface-roboto": "0.0.45",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "connect-mongo": "^2.0.1",
+    "dotenv": "^5.0.0",
+    "express-session": "^1.15.6",
+    "mongodb": "^3.0.1",
+    "nedb": "^1.8.0",
+    "next-auth": "^1.8.1",
+    "nodemailer": "^4.4.2",
+    "nodemailer-direct-transport": "^3.3.2",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-twitter": "^1.0.4"
   },
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "node index.js"
   }
 }

@@ -3,9 +3,20 @@ import Head from 'next/head'
 import Router from 'next/router'
 import Link from 'next/link'
 import { NextAuth } from 'next-auth/client'
+import Layout from '../../components/MyLayout.js'
+import withRoot from '../../components/withRoot';
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import List from 'material-ui/List';
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
+import Button from 'material-ui/Button';
+import Input from 'material-ui/Input';
+import {  FormLabel,  FormControl,  FormGroup,  FormControlLabel,  FormHelperText,} from 'material-ui/Form';
+import AccountCircle from 'material-ui-icons/AccountCircle';
+import Checkbox from 'material-ui/Checkbox';
 
-export default class extends React.Component {
-  
+class Index extends  React.Component {
+
   static async getInitialProps({req}) {
     return {
       session: await NextAuth.init({req}),
@@ -13,26 +24,26 @@ export default class extends React.Component {
       providers: await NextAuth.providers({req})
     }
   }
-  
+
   constructor(props) {
     super(props)
     this.state = {
       email: '',
       session: this.props.session
     }
-    this.handleEmailChange = this.handleEmailChange.bind(this)  
+    this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handleSignInSubmit = this.handleSignInSubmit.bind(this)
   }
-    
+
   handleEmailChange(event) {
     this.setState({
       email: event.target.value
     })
   }
-  
+
   handleSignInSubmit(event) {
     event.preventDefault()
-    
+
     if (!this.state.email) return
 
     NextAuth.signin(this.state.email)
@@ -43,11 +54,11 @@ export default class extends React.Component {
       Router.push(`/auth/error?action=signin&type=email&email=${this.state.email}`)
     })
   }
-  
+
   render() {
     if (this.props.session.user) {
       return (
-        <div className="container">
+      <Layout>
           <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <script src="https://cdn.polyfill.io/v2/polyfill.min.js"/>
@@ -68,35 +79,57 @@ export default class extends React.Component {
           <p className="text-center">
             <Link href="/"><a>Home</a></Link>
           </p>
-        </div>
+        </Layout>
       )
     } else {
       return (
-        <div className="container">
-          <Head>
-            <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <script src="https://cdn.polyfill.io/v2/polyfill.min.js"/>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossOrigin="anonymous"/>
-          </Head>
-          <div className="text-center">
-            <h1 className="display-4 mt-3 mb-3">NextAuth Example</h1>
-          </div>
+      <Layout>
+          <List className="listStyle">
+          <Card raised = {true} >
+              <form id="signin" method="post" action="/auth/email/signin" onSubmit={this.handleSignInSubmit}>
+                <CardContent>
+                  <Grid container direction='row' justify='center' alignItems='center'>
+                    <Grid item></Grid>
+                    <Grid item>
+                      <AccountCircle style={{ width: 100, height: 100}}/>
+                        <Typography className="textLogin" variant="title" >
+                        Login
+                        </Typography>
+                    </Grid>
+                    <Grid item></Grid>
+                  </Grid>
+                    <br/>
+                    <input name="_csrf"  type="hidden"  value={this.state.session.csrfToken}/>
+                   <FormControl fullWidth   >
+                     <Input name="email" type="text" placeholder="j.smith@example.com" value={this.state.email} onChange={this.handleEmailChange} id="email"/>
+                   </FormControl>
+                   <FormControl>
+                     <FormGroup>
+                       <FormControlLabel
+                         control={
+                           <Checkbox
+                              checked={this.state.checkedA}
+                              onChange={this.handleChange}
+                              value="checkedA"
+                            />
+                         }
+                         label="Remind me"
+                       />
+                     </FormGroup>
+                   </FormControl>
+                </CardContent>
+                <CardActions>
+                    <Button variant="raised" color="primary" type="submit">
+                     Sign up
+                   </Button>
+                </CardActions>
+              </form>
+            </Card>
           <div className="row">
             <div className="col-sm-6 mr-auto ml-auto">
               <div className="card mt-3 mb-3">
-                <h4 className="card-header">Sign In</h4>
                 <div className="card-body pb-0">
                   <SignInButtons providers={this.props.providers}/>
-                  <form id="signin" method="post" action="/auth/email/signin" onSubmit={this.handleSignInSubmit}>
-                    <input name="_csrf" type="hidden" value={this.state.session.csrfToken}/>
-                    <p>
-                      <label htmlFor="email">Email address</label><br/>
-                      <input name="email" type="text" placeholder="j.smith@example.com" id="email" className="form-control" value={this.state.email} onChange={this.handleEmailChange}/>
-                    </p>
-                    <p className="text-right">
-                      <button id="submitButton" type="submit" className="btn btn-outline-primary">Sign in with email</button>
-                    </p>
-                  </form>
                 </div>
               </div>
             </div>
@@ -107,11 +140,14 @@ export default class extends React.Component {
           <p className="text-center">
             <Link href="/"><a>Home</a></Link>
           </p>
-        </div>
+        </List>
+      </Layout>
       )
     }
   }
 }
+export default withRoot(Index);
+
 
 export class LinkAccounts extends React.Component {
   render() {
@@ -167,7 +203,7 @@ export class SignInButtons extends React.Component {
                   Sign in with {provider}
                 </a>
               </p>
-              )              
+              )
           })
         }
       </React.Fragment>

@@ -4,7 +4,7 @@
  * To invoke next-auth you will need to define a configuration block for your
  * site. You can create a next-auth.config.js file and put all your options
  * in it and pass it to next-auth when calling init().
- * 
+ *
  * A number of sample configuration files for various databases and
  * authentication options are provided.
  **/
@@ -20,7 +20,7 @@ require('dotenv').load()
 // Initialize Next.js
 const nextApp = next({
   dir: '.',
-  dev: (process.env.NODE_ENV === 'development')
+  dev: (true)
 })
 
 // Add next-auth to next app
@@ -32,10 +32,10 @@ nextApp
 })
 .then(nextAuthOptions => {
   // Pass Next.js App instance and NextAuth options to NextAuth
-  return nextAuth(nextApp, nextAuthOptions)  
+  return nextAuth(nextApp, nextAuthOptions)
 })
 .then((response) => {
-  console.log(`Ready on http://localhost:${process.env.PORT || 3000}`)
+  console.log(`Ready sason http://localhost:${process.env.PORT || 3000}`)
 })
 .catch(err => {
   console.log('An error occurred, unable to start the server')

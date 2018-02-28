@@ -40,7 +40,7 @@
     "passport-twitter": "^1.0.4"
   },
   "scripts": {
-    "dev": "node index.js",
+    "dev": "node server.js",
     "build": "next build",
     "start": "node server.js"
   }

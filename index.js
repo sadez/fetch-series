@@ -13,6 +13,10 @@
 const next = require('next')
 const nextAuth = require('next-auth')
 const nextAuthConfig = require('./next-auth.config')
+const express = require('express')
+
+const server = express()
+
 
 // Load environment variables from .env
 require('dotenv').load()
@@ -20,8 +24,9 @@ require('dotenv').load()
 // Initialize Next.js
 const nextApp = next({
   dir: '.',
-  dev: (true)
+  dev: (false)
 })
+const handle = nextApp.getRequestHandler()
 
 // Add next-auth to next app
 nextApp
@@ -32,6 +37,30 @@ nextApp
 })
 .then(nextAuthOptions => {
   // Pass Next.js App instance and NextAuth options to NextAuth
+  if (nextAuthOptions.port) delete nextAuthOptions.port
+  nextAuthOptions.nextApp = nextApp
+
+  server.get('/p/:id', (req, res) => {
+    const actualPage = '/post'
+    const queryParams = { id: req.params.id }
+    nextApp.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('/searchPage/:id', (req, res) => {
+    const actualPage = '/searchPage'
+    const queryParams = { id: req.params.id }
+    nextApp.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('*', (req, res) => {
+    return handle(req, res)
+  })
+
+  server.listen(3000, (err) => {
+    if (err) throw err
+    console.log('> Reasdy onsss http://localhost:3000')
+  })
+
   return nextAuth(nextApp, nextAuthOptions)
 })
 .then((response) => {

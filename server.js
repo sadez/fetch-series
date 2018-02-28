@@ -1,54 +1,79 @@
-const express = require('express')
+'use strict'
+
 const next = require('next')
 const nextAuth = require('next-auth')
 const nextAuthConfig = require('./next-auth.config')
 
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
-const server = express()
-
-// Load environment variables from .env
+// Load environment variables from .env file if present
 require('dotenv').load()
 
+process.on('uncaughtException', function(err) {
+  console.error('Uncaught Exception: ', err)
+})
 
-app.prepare()
+process.on('unhandledRejection', (reason, p) => {
+  console.error('Unhandled Rejection: Promise:', p, 'Reason:', reason)
+})
+
+// Default when run with `npm start` is 'production' and default port is '80'
+// `npm run dev` defaults mode to 'development' & port to '3000'
+process.env.NODE_ENV = process.env.NODE_ENV || 'production'
+process.env.PORT = process.env.PORT || 3000
+
+// Initialize Next.js
+const nextApp = next({
+  dir: '.',
+  dev: false
+})
+
+// Add next-auth to next app
+nextApp
+.prepare()
 .then(() => {
   // Load configuration and return config object
   return nextAuthConfig()
 })
 .then(nextAuthOptions => {
-
-
-  // Pass your own Express instance to NextAuth - and don't pass a port!
+  // Pass Next.js App instance and NextAuth options to NextAuth
+  // Note We do not pass a port in nextAuthOptions, because we want to add some
+  // additional routes before Express starts (if you do pass a port, NextAuth
+  // tells NextApp to handle default routing and starts Express automatically).
   if (nextAuthOptions.port) delete nextAuthOptions.port
-  nextAuthOptions.app = app
+  return nextAuth(nextApp, nextAuthOptions)
+})
+.then(nextAuthOptions => {
+  // Get Express and instance of Express from NextAuth
+  const express = nextAuthOptions.express
+  const expressApp = nextAuthOptions.expressApp
 
-  nextAuth(app, nextAuthOptions)
-
-
-  server.get('/p/:id', (req, res) => {
+  // A simple example of custom routing
+  // Send requests for '/custom-route/{anything}' to 'pages/examples/routing.js'
+  expressApp.get('/p/:id', (req, res) => {
     const actualPage = '/post'
     const queryParams = { id: req.params.id }
-    app.render(req, res, actualPage, queryParams)
+    return nextApp.render(req, res, actualPage, queryParams)
   })
 
-  server.get('/searchPage/:id', (req, res) => {
+  expressApp.get('/searchPage/:id', (req, res) => {
     const actualPage = '/searchPage'
     const queryParams = { id: req.params.id }
-    app.render(req, res, actualPage, queryParams)
+    return nextApp.render(req, res, actualPage, queryParams)
   })
 
-  server.get('*', (req, res) => {
-    return handle(req, res)
+  // Default catch-all handler to allow Next.js to handle all other routes
+  expressApp.all('*', (req, res) => {
+    let nextRequestHandler = nextApp.getRequestHandler()
+    return nextRequestHandler(req, res)
   })
 
-  server.listen(3000, (err) => {
-    if (err) throw err
-    console.log('> Reasdy onsss http://localhost:3000')
+  expressApp.listen(process.env.PORT, err => {
+    if (err) {
+      throw err
+    }
+    console.log('> Ready on http://localhost:' + process.env.PORT + ' [' + process.env.NODE_ENV + ']')
   })
 })
-.catch((ex) => {
-  console.error(ex.stack)
-  process.exit(1)
+.catch(err => {
+  console.log('An error occurred, unable to start the server')
+  console.log(err)
 })

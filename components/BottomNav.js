@@ -20,7 +20,7 @@ class SimpleBottomNavigation extends React.Component {
 
   componentDidMount() {
     //check from url to know the active nav
-    if(Router.pathname == '/about'){
+    if(Router.pathname == '/profile' || Router.pathname == '/auth'  || Router.pathname == '/auth/logout'){
       this.setState({value: 2});
     }
     else if (Router.pathname == '/searchPage') {
@@ -34,7 +34,7 @@ class SimpleBottomNavigation extends React.Component {
   handleChange = (event, value) => {
     this.setState({ value });
     if(value==2){
-      Router.push({pathname: '/about'})
+      Router.push({pathname: '/profile'})
     }
     if(value==1){
       Router.push({pathname: '/searchPage'})
@@ -55,7 +55,7 @@ class SimpleBottomNavigation extends React.Component {
     			className='fixBottom'>
     			<BottomNavigationAction  label="Favourite show" icon={<Movie />} />
     			<BottomNavigationAction  label="Search" icon={<Search />} />
-    			<BottomNavigationAction  label="About" icon={<Info />} />
+    			<BottomNavigationAction  label="Profile" icon={<Info />} />
     		 </BottomNavigation>
     		<style jsx global>{`
     		  .fixBottom{

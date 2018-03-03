@@ -1,9 +1,8 @@
 import React from 'react'
-import Head from 'next/head'
 import Router from 'next/router'
 import Link from 'next/link'
 import { NextAuth } from 'next-auth/client'
-import Layout from '../../components/MyLayout.js'
+import LayoutDisconnected from '../../components/LayoutDisconnected.js'
 import withRoot from '../../components/withRoot';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import List from 'material-ui/List';
@@ -59,11 +58,6 @@ class Index extends  React.Component {
     if (this.props.session.user) {
       return (
       <Layout>
-          <Head>
-            <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <script src="https://cdn.polyfill.io/v2/polyfill.min.js"/>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossOrigin="anonymous"/>
-          </Head>
           <div className="text-center">
             <h1 className="display-4 mt-3">NextAuth Example</h1>
             <p className="lead mt-3 mb-1">You are signed in as <span className="font-weight-bold">{this.props.session.user.email}</span>.</p>
@@ -83,7 +77,7 @@ class Index extends  React.Component {
       )
     } else {
       return (
-      <Layout>
+      <LayoutDisconnected>
           <List className="listStyle">
           <Card raised = {true} >
               <form id="signin" method="post" action="/auth/email/signin" onSubmit={this.handleSignInSubmit}>
@@ -101,17 +95,13 @@ class Index extends  React.Component {
                     <br/>
                     <input name="_csrf"  type="hidden"  value={this.state.session.csrfToken}/>
                    <FormControl fullWidth   >
-                     <Input name="email" type="text" placeholder="j.smith@example.com" value={this.state.email} onChange={this.handleEmailChange} id="email"/>
+                     <Input name="email" type="text" placeholder="test@example.com" value={this.state.email} onChange={this.handleEmailChange} id="email"/>
                    </FormControl>
                    <FormControl>
                      <FormGroup>
                        <FormControlLabel
                          control={
-                           <Checkbox
-                              checked={this.state.checkedA}
-                              onChange={this.handleChange}
-                              value="checkedA"
-                            />
+                           <Checkbox checked={this.state.checkedA} onChange={this.handleChange} value="checkedA" />
                          }
                          label="Remind me"
                        />
@@ -119,9 +109,7 @@ class Index extends  React.Component {
                    </FormControl>
                 </CardContent>
                 <CardActions>
-                    <Button variant="raised" color="primary" type="submit">
-                     Sign up
-                   </Button>
+                    <Button variant="raised" color="primary" type="submit"> Sign up </Button>
                 </CardActions>
               </form>
             </Card>
@@ -134,14 +122,8 @@ class Index extends  React.Component {
               </div>
             </div>
           </div>
-          <p className="text-center small">
-            <Link href="/auth/credentials"><a>Sign in with credentials</a></Link>
-          </p>
-          <p className="text-center">
-            <Link href="/"><a>Home</a></Link>
-          </p>
         </List>
-      </Layout>
+      </LayoutDisconnected>
       )
     }
   }

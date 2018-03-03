@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
-import Router from 'next/router'
-
 
 import Header from './Header';
 import SimpleBottomNavigation from './BottomNav';
 
 // Component define the layout of every nextjs page(header ,content,bottomna) , global styles are defines here
-class Layout extends Component {
+class LayoutDisconnected extends Component {
 
 	constructor (props) {
 		super(props);
@@ -16,19 +14,17 @@ class Layout extends Component {
     auth: true,
   };
 
-	componentDidMount() {
+	componentWillMount() {
 
 		if (this.props.session) {
 			if(!this.props.session.user){
 				this.setState({ auth: false });
-				Router.push({pathname: '/auth'})
 			}
 			else {
 				this.setState({ auth: true });
 			}
 		} else {
 			this.setState({ auth: false });
-			Router.push({pathname: '/auth'})
 		}
 
 	}
@@ -39,16 +35,9 @@ class Layout extends Component {
 	  return(
 		<div className="layoutStyle" >
 			  <Header session = { session } ></Header>
-
-				{auth && (
 					<div className="paperStyle" >
 					{this.props.children}
-				  </div>
-				)}
-				{!auth && (
-					<div className="paperStyle" >
-				  </div>
-				)}
+				  </div>				
 			  <SimpleBottomNavigation/>
 
 			<style jsx global>{`
@@ -142,4 +131,4 @@ class Layout extends Component {
 }
 
 
-export default Layout;
+export default LayoutDisconnected;

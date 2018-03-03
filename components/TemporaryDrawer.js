@@ -26,7 +26,6 @@ class TemporaryDrawer extends React.Component {
   };
 
   toggleDrawer = (side, open) => () => {
-    console.log("ch7ma");
 
     this.setState({
       [side]: open,

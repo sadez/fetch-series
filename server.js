@@ -23,7 +23,7 @@ process.env.PORT = process.env.PORT || 3000
 // Initialize Next.js
 const nextApp = next({
   dir: '.',
-  dev: false
+  dev: true
 })
 
 // Add next-auth to next app

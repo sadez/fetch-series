@@ -65,6 +65,8 @@ class Profile extends Component {
                     </CardContent>
                 </Card>
                 <br/>
+                  <Typography variant="title"> User information </Typography>
+
                 <Card raised = {true} className="">
                       <CardContent>
                         <Grid container direction='row' justify='center' alignItems='center'>
